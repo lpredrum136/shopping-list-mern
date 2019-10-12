@@ -1,6 +1,9 @@
 {
   "name": "shoppinglist",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.16.0"
+  },
   "description": "Shopping List built with MERN stack",
   "main": "server.js",
   "scripts": {
