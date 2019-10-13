@@ -53,14 +53,17 @@ class ShoppingList extends Component {
                 classNames='fade'
               >
                 <ListGroupItem>
-                  <Button
-                    className='remove-btn'
-                    color='danger'
-                    size='sm'
-                    onClick={this.onDeleteClick.bind(this, item_object._id)}
-                  >
-                    &times;
-                  </Button>
+                  {this.props.isAuthenticated ? (
+                    <Button
+                      className='remove-btn'
+                      color='danger'
+                      size='sm'
+                      onClick={this.onDeleteClick.bind(this, item_object._id)}
+                    >
+                      &times;
+                    </Button>
+                  ) : null}
+
                   {item_object.name}
                 </ListGroupItem>
               </CSSTransition>
@@ -75,12 +78,14 @@ class ShoppingList extends Component {
 ShoppingList.propTypes = {
   getItems: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
-  my_items: PropTypes.object.isRequired
+  my_items: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    my_items: state.myitems
+    my_items: state.myitems,
+    isAuthenticated: state.myauth.isAuthenticated
   };
 };
 
